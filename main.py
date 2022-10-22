@@ -27,6 +27,20 @@ def Json2Dfs(objs):
     return rec(objs)
 
 
+def route2path(routes):
+    pprint.pprint(routes)
+    if len(routes) <= 1:
+        return
+    firsts = copy.copy(routes)
+    seconds = copy.copy(routes)
+    firsts.pop(0)
+    seconds.pop(-1)
+    for first, second in zip(firsts, seconds):
+        for fr, sc in zip(first, second):
+            if fr==sc:
+                print("OK")
+        else:
+            print("NG")
 
 
 
@@ -47,8 +61,7 @@ def main():
                 pprint.pprint(token)
                 results = Json2Dfs(token)
                 print()
-                for result in results:
-                    print(result)
+                route2path(results)
                 print()
                 print("**************************************************************")
                 
